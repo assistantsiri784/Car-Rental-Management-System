@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 18px;
+            /* 🔥 better control */
+        }
+
+        .invoice {
+            width: 700px;
+            /* 🔥 increased from 500 */
+            background: white;
+            color: black;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 0.8s ease;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(45deg, #3b82f6, #06b6d4);
+            color: white;
+            padding: 30px;
+            /* 🔥 bigger */
+            text-align: center;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 28px;
+            /* 🔥 bigger title */
+        }
+
+        .header p {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        /* Content */
+        .content {
+            padding: 30px;
+            /* 🔥 more spacing */
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px 0;
+            /* 🔥 more space */
+            font-size: 17px;
+            /* 🔥 bigger text */
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+
+        /* Highlight sections */
+        .late {
+            color: red;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .total {
+            font-size: 28px;
+            /* 🔥 big total */
+            color: green;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 15px;
+            color: gray;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Button */
+        .btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 25px;
+            /* 🔥 bigger button */
+            border: none;
+            border-radius: 10px;
+            background: #3b82f6;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #2563eb;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="invoice">
+
+        <!-- Header -->
+        <div class="header">
+            <h2>🚗 Car Rental Invoice</h2>
+
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+
+            <div class="row">
+                <span><b>Customer:</b></span>
+                <span>{{data.name}}</span>
+            </div>
+            <div class="row">
+                <span><b>Email:</b></span>
+                <span>{{data.email}}</span>
+            </div>
+
+            <div class="row">
+                <span><b>Phone:</b></span>
+                <span>{{data.phone}}</span>
+            </div>
+            <div class="row">
+                <span><b>Car:</b></span>
+                <span>{{data.brand}} {{data.model}}</span>
+            </div>
+
+            <div class="row">
+                <span><b>Start Date:</b></span>
+                <span>{{data.start_date}}</span>
+            </div>
+
+            <div class="row">
+                <span><b>End Date:</b></span>
+                <span>{{data.end_date}}</span>
+            </div>
+
+            <div class="row">
+                <span><b>Return Date:</b></span>
+                <span>{{data.return_date}}</span>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <span><b>Price/Day:</b></span>
+                <span>₹{{data.price_per_day}}</span>
+            </div>
+
+            <div class="row late">
+                <span>Late Fee:</span>
+                <span>₹{{late_fee}}</span>
+            </div>
+
+            <hr>
+            <div class="row">
+                <span><b>Payment Method:</b></span>
+                <span>{{data.payment_method}}</span>
+            </div>
+            <div class="total">
+                Total: ₹{{data.total_cost}}
+            </div>
+
+            <button class="btn" onclick="window.print()">🖨️ Print Bill</button>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            Thank you for choosing our service 🚗
+        </div>
+
+    </div>
+
+</body>
+
+</html>
